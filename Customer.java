@@ -1,41 +1,42 @@
 package com.example.product_management_system.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Customer
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customer_id;
+    @Column(name = "customer_id")
+    private int customerId;
 
-    private String first_name;
-    private String last_name;
+    @Column(length = 50, nullable = false)
+    private String firstName;
 
-    public int getCustomer_id() {
-        return customer_id;
+    @Column(length = 50, nullable = false)
+    private String lastName;
+
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
