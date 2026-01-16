@@ -1,10 +1,7 @@
 package com.example.product_management_system.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Product
@@ -13,8 +10,13 @@ public class Product
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
 
+    @Column(length = 100, nullable = false)
     private String productName;
+
+    @Column(length = 30, nullable = false)
     private String color;
+
+    @Column(length = 10, nullable = false)
     private String size;
 
 
