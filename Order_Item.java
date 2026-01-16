@@ -1,9 +1,10 @@
 package com.example.product_management_system.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-public class Order_Item
+public class OrderItem
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,13 +13,17 @@ public class Order_Item
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private Order_Header orderHeader;
+    @JsonIgnore
+    private OrderHeader order;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @Column(nullable = false)
     private int quantity;
+
+    @Column(length = 20, nullable = false)
     private String status;
 
     public int getOrderItemSeqId() {
@@ -29,12 +34,12 @@ public class Order_Item
         this.orderItemSeqId = orderItemSeqId;
     }
 
-    public Order_Header getOrderHeader() {
-        return orderHeader;
+    public OrderHeader getOrder() {
+        return order;
     }
 
-    public void setOrderHeader(Order_Header orderHeader) {
-        this.orderHeader = orderHeader;
+    public void setOrder(OrderHeader order) {
+        this.order = order;
     }
 
     public Product getProduct() {
